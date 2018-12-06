@@ -1,0 +1,13 @@
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="addNewTask()">اضافه کن</button>
+    </div>
+    <input [(ngModel)]="newTitle" type="text" class="form-control" placeholder="تسک جدید" aria-label="Example text with button addon" aria-describedby="button-addon1">
+    <input [(ngModel)]="newProjectID" type="text" class="form-control" placeholder="آی‌دی پروژه">
+</div>
+
+<app-task *ngFor="let task of getTasks()" [task]="task"></app-task>
+
+<div *ngIf="getTasks().length == 0">
+    تسکی وجود ندارد
+</div>

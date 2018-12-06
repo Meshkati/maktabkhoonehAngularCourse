@@ -1,0 +1,9 @@
+<div class="rtl">
+    <a routerLink="/projects">لیست</a>
+    <button class="btn btn-primary" (click)="onShowProjects()">
+        لیست پروژه‌ها
+    </button>
+    <a [routerLink]="project.title" *ngFor="let project of projects">
+        {{project.title}}
+    </a>
+</div>

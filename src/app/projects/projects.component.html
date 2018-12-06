@@ -1,9 +1,15 @@
 <div class="rtl">
-    <a routerLink="/projects">لیست</a>
-    <button class="btn btn-primary" (click)="onShowProjects()">
-        لیست پروژه‌ها
-    </button>
-    <a [routerLink]="project.title" *ngFor="let project of projects">
+    <h2>
+        <a routerLink="/projects">لیست</a>
+    </h2>
+    
+    <a class="project-title" [routerLink]="project.title" *ngFor="let project of projects">
         {{project.title}}
     </a>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="onNewProject()">اضافه کن</button>
+        </div>
+        <input [(ngModel)]="newProjectTitle" type="text" class="form-control" placeholder="پروژه‌ی جدید">
+    </div>
 </div>

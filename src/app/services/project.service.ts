@@ -3,9 +3,10 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class ProjectService {
     projects: Array<Project> = new Array<Project>();
-    
+    lastIDNumber: number = 0;
+
     constructor() {
-        this.projects.push(new Project("پیش فرض"));
+        this.addNewProject("پیش فرض");
     }
 
     getProjects() {
@@ -22,7 +23,12 @@ export class ProjectService {
     }
 
     addNewProject(projectTitle: string) {
-        this.projects.push(new Project(projectTitle));
+        this.projects.push(new Project(this.lastIDNumber++ ,projectTitle));
+    }
+
+    addNewTask(title: string, isDone: boolean, projectID: number = 0) {
+        let newTask = new Task(title, isDone, projectID);
+        this.addTaskToProject(newTask, projectID);
     }
 
     getTasks(projectID: number) {
@@ -32,13 +38,20 @@ export class ProjectService {
             return null;
         }
     }
+
+    getProjectOfTask(task: Task) {
+        if (this.projects[task.projectID] != null && this.projects[task.projectID] != undefined)
+            return this.projects[task.projectID];
+    }
 }
 
 export class Project {
     public title: string;
+    public id: number;
     public tasks: Array<Task> = new Array<Task>();
     
-    constructor(title: string) {
+    constructor(id: number, title: string) {
+        this.id = id;
         this.title = title;
     }
 }
@@ -46,9 +59,11 @@ export class Project {
 export class Task {
     private title: string;
     public isDone: boolean = false;
+    public projectID: number;
     
-    constructor(title: string, isDone) {
+    constructor(title: string, isDone, projectID: number) {
         this.title = title;
         this.isDone = isDone;
+        this.projectID = projectID;
     }
 }

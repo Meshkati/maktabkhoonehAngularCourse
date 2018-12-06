@@ -19,8 +19,8 @@ export class TaskListComponent implements OnInit {
   }
   
   addNewTask() {
-    let task: Task = new Task(this.newTitle, false);
-    
+    let task: Task = new Task(this.newTitle, false, this.newProjectID);
+    console.log(this.newProjectID);
     this.projectService.addTaskToProject(task, this.newProjectID);
   }
   
@@ -36,6 +36,17 @@ export class TaskListComponent implements OnInit {
     }
     
     return validTasks;
+  }
+
+  getProjectsTitle() {
+    // let titles = new Array<String>();
+    // for (let project of this.projectService.getProjects()) {
+    //   titles.push(project.title);
+    // }
+
+    // return titles;
+
+    return this.projectService.getProjects();
   }
   
 }

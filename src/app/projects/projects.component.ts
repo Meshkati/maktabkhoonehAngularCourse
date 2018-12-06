@@ -9,6 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProjectsComponent implements OnInit {
   projects: Array<Project> = new Array<Project>();
+  newProjectTitle: string;
+
   constructor(
     private projectService: ProjectService,
     private router: Router,
@@ -20,6 +22,10 @@ export class ProjectsComponent implements OnInit {
 
   onShowProjects() {
     this.router.navigate(["projects"], {relativeTo: this.activatedRoute});
+  }
+
+  onNewProject() {
+    this.projectService.addNewProject(this.newProjectTitle);
   }
 
 }

@@ -8,20 +8,11 @@ import { ProjectsComponent } from '../projects/projects.component';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-  newTitle: string;
-  newProjectID: number;
-  
   
   constructor(private projectService: ProjectService) { }
   
   ngOnInit() {
-    this.newProjectID = 0;
-  }
-  
-  addNewTask() {
-    let task: Task = new Task(this.newTitle, false, this.newProjectID);
-    console.log(this.newProjectID);
-    this.projectService.addTaskToProject(task, this.newProjectID);
+    
   }
   
   getTasks() {

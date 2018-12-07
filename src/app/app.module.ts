@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms'
 import { ProjectService } from './services/project.service';
 import { AppHomeComponent } from './app-home/app-home.component';
 import { ProjectComponent } from './project/project.component';
+import { AddTaskDialogComponent } from './add-task-dialog/add-task-dialog.component';
 
 const appRoute: Routes = [
   { path: 'home', component: AppHomeComponent, children: [
@@ -29,7 +30,9 @@ const appRoute: Routes = [
     TaskListComponent,
     TaskComponent,
     AppHomeComponent,
-    ProjectComponent
+    ProjectComponent,
+    AddTaskDialogComponent,
+    AddTaskDialogComponent
   ],
   imports: [
     BrowserModule,

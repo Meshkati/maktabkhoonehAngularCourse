@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService, Task, Project } from '../services/project.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-project',
@@ -10,14 +10,27 @@ import { ActivatedRoute } from '@angular/router';
 export class ProjectComponent implements OnInit {
   tasks: Array<Task> = new Array<Task>()
   project: Project;
+
   constructor(
     private projectSerivce: ProjectService,
-    private activatedRout: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    let id:number = +this.activatedRout.snapshot.params['id'];
-    console.log(id);
-    this.tasks = this.projectSerivce.getTasks(id);
+    // let id:number = +this.activatedRout.snapshot.params['id'];
+    let id: number = 0;
+    this.activatedRoute.params.subscribe(
+      (params: Params) => {
+        id = params['id'];
+        this.tasks = this.projectSerivce.getTasks(id);
+        console.log("inProjectComponent -> id -> " + params['id']);
+      },
+      () => {
+        
+      },
+      () => {
+
+      }
+    );
   }
 
 }

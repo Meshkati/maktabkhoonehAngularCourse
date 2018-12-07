@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, Observer, Subject } from "rxjs";
+import { map } from 'rxjs/operators'
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,11 @@ export class AuthService {
             setInterval(() => {
                 observer.next(observableCounter++);
             }, 1000)
-        })
+        }).pipe(
+            map((data: number) => {
+                return data * data;
+            })
+        )
 
         this.suTest = new Subject<number>();
 

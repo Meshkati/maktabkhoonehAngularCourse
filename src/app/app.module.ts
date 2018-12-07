@@ -13,6 +13,9 @@ import { ProjectComponent } from './project/project.component';
 import { AddTaskDialogComponent } from './add-task-dialog/add-task-dialog.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
+import { AppGuard } from './app-guard.guard';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,15 @@ import { AppRoutingModule } from './app-routing.module';
     ProjectComponent,
     AddTaskDialogComponent,
     AddTaskDialogComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ProjectService],
+  providers: [ProjectService, AuthService, AppGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

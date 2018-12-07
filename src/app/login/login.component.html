@@ -1,0 +1,5 @@
+<p>
+  login works!
+</p>
+<button *ngIf="!isLoggedIn()" (click)="login()" class="btn btn-primary">ورود</button>
+<button *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-danger">خروج</button>

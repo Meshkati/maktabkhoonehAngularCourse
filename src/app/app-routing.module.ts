@@ -9,13 +9,13 @@ import { LoginComponent } from "./login/login.component";
 import { AppGuard } from "./app-guard.guard";
 
 const appRoute: Routes = [
-    { path: 'home', component: AppHomeComponent, canActivateChild: [AppGuard], children: [
+    { path: 'home', component: AppHomeComponent, children: [
         { path: ':id', component: ProjectComponent },
         { path: '', component: TaskListComponent }
     ] },
     { path: 'projects', component: ProjectsComponent, canActivate: [AppGuard] },
     { path: 'projects/:id', component: ProjectComponent },
-    { path: 'notFound', component: NotFoundComponent },
+    { path: 'notFound', component: NotFoundComponent, data: { errorMessage: 'پیدا نشد', date: 'جمعه' } },
     { path: 'login', component: LoginComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: '/notFound', pathMatch: 'full' }

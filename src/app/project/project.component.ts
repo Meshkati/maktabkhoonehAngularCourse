@@ -12,10 +12,10 @@ export class ProjectComponent implements OnInit {
   project: Project;
   constructor(
     private projectSerivce: ProjectService,
-    private activatedRouter: ActivatedRoute) { }
+    private activatedRout: ActivatedRoute) { }
 
   ngOnInit() {
-    let id:number = +this.activatedRouter.snapshot.params['id'];
+    let id:number = +this.activatedRout.snapshot.params['id'];
     console.log(id);
     this.tasks = this.projectSerivce.getTasks(id);
   }

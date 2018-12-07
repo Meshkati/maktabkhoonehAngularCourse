@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -6,20 +6,27 @@ import { AuthService } from '../auth.service';
   templateUrl: './app-home.component.html',
   styleUrls: ['./app-home.component.css']
 })
-export class AppHomeComponent implements OnInit {
+export class AppHomeComponent implements OnInit, OnDestroy {
+  testObservableSubscription;
+  testSubjectSubscription;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.testObservable().subscribe(
+    this.testObservableSubscription = this.authService.testObservable().subscribe(
       (data) => {
-        // console.log("inHome - Observable " + data)
+        console.log("inHome - Observable " + data)
       }) 
-    this.authService.testSubject().subscribe(
+    this.testSubjectSubscription = this.authService.testSubject().subscribe(
       (data) => {
         console.log("inHome - Subject " + data)
       }
     )
+  }
+
+  ngOnDestroy() {
+    this.testSubjectSubscription.unsubscribe();
+    this.testObservableSubscription.unsubscribe();
   }
 
 }

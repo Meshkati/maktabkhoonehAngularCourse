@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Observable, Observer } from 'rxjs';
 
@@ -7,30 +7,40 @@ import { Observable, Observer } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   isLoggedIn;
+  loggedInSubscription;
+  testObservableSubscription;
+  testSubjectSubscription;
+  
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.isAuthenticated().subscribe(
+    this.loggedInSubscription = this.authService.isAuthenticated().subscribe(
       (data: boolean) => {
         this.isLoggedIn = data;
         console.log(this.isLoggedIn)
       }
     )
 
-    this.authService.testObservable().subscribe(
+    this.testObservableSubscription = this.authService.testObservable().subscribe(
       (data) => {
         // console.log("inLogin - Observable -> " + data);
       }
     );
 
-    this.authService.testSubject().subscribe(
+    this.testSubjectSubscription = this.authService.testSubject().subscribe(
       (data) => {
         console.log("inLogin - Subject -> " + data);
       }
     )
+  }
+
+  ngOnDestroy() {
+    this.loggedInSubscription.unsubscribe();
+    this.testObservableSubscription.unsubscribe();
+    this.testSubjectSubscription.unsubscribe();
   }
 
   login() {

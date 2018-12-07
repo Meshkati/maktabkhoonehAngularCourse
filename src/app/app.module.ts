@@ -11,6 +11,7 @@ import { ProjectService } from './services/project.service';
 import { AppHomeComponent } from './app-home/app-home.component';
 import { ProjectComponent } from './project/project.component';
 import { AddTaskDialogComponent } from './add-task-dialog/add-task-dialog.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoute: Routes = [
   { path: 'home', component: AppHomeComponent, children: [
@@ -19,7 +20,9 @@ const appRoute: Routes = [
   ] },
   { path: 'projects', component: ProjectsComponent },
   { path: 'projects/:id', component: ProjectComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'notFound', component: NotFoundComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/notFound', pathMatch: 'full' }
 ]
 
 @NgModule({
@@ -32,7 +35,8 @@ const appRoute: Routes = [
     AppHomeComponent,
     ProjectComponent,
     AddTaskDialogComponent,
-    AddTaskDialogComponent
+    AddTaskDialogComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

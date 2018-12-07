@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +8,17 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isLoggedIn = false;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    // TODO: RXJS
-    // this.isLoggedIn = this.authService.isAuthenticated();
+    this.authService.isAuthenticated().subscribe(
+      (data: boolean) => {
+        this.isLoggedIn = data;
+        console.log(this.isLoggedIn)
+      }
+    )
   }
 
   login() {
@@ -21,9 +27,5 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-  }
-  
-  isLoggedIn() {
-    return this.authService.isAuthenticated()
   }
 }

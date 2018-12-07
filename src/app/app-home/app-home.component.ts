@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-app-home',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.testObservable().subscribe(
+      (data) => {
+        // console.log("inHome - Observable " + data)
+      }) 
+    this.authService.testSubject().subscribe(
+      (data) => {
+        console.log("inHome - Subject " + data)
+      }
+    )
   }
 
 }

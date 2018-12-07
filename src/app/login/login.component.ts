@@ -8,7 +8,7 @@ import { Observable, Observer } from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  isLoggedIn = false;
+  isLoggedIn;
 
   constructor(private authService: AuthService) { }
 
@@ -17,6 +17,18 @@ export class LoginComponent implements OnInit {
       (data: boolean) => {
         this.isLoggedIn = data;
         console.log(this.isLoggedIn)
+      }
+    )
+
+    this.authService.testObservable().subscribe(
+      (data) => {
+        // console.log("inLogin - Observable -> " + data);
+      }
+    );
+
+    this.authService.testSubject().subscribe(
+      (data) => {
+        console.log("inLogin - Subject -> " + data);
       }
     )
   }

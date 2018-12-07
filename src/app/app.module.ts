@@ -12,9 +12,13 @@ import { AppHomeComponent } from './app-home/app-home.component';
 import { ProjectComponent } from './project/project.component';
 
 const appRoute: Routes = [
+  { path: 'home', component: AppHomeComponent, children: [
+    { path: ':id', component: ProjectComponent },
+    { path: '', component: TaskListComponent }
+  ] },
   { path: 'projects', component: ProjectsComponent },
   { path: 'projects/:id', component: ProjectComponent },
-  { path: '', component: AppHomeComponent }
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ]
 
 @NgModule({

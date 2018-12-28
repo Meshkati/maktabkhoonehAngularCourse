@@ -7,6 +7,7 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { NgModule } from "@angular/core";
 import { LoginComponent } from "./login/login.component";
 import { AppGuard } from "./app-guard.guard";
+import { RegisterComponent } from "./register/register.component";
 
 const appRoute: Routes = [
     { path: 'home', component: AppHomeComponent, children: [
@@ -17,6 +18,7 @@ const appRoute: Routes = [
     { path: 'projects/:id', component: ProjectComponent },
     { path: 'notFound', component: NotFoundComponent, data: { errorMessage: 'پیدا نشد', date: 'جمعه' } },
     { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: '/notFound', pathMatch: 'full' }
 ]

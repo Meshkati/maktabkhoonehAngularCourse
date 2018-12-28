@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AppGuard } from './app-guard.guard';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AppGuard } from './app-guard.guard';
     AddTaskDialogComponent,
     AddTaskDialogComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

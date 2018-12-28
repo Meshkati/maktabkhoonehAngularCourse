@@ -1,0 +1,15 @@
+<form #formReference="ngForm" (ngSubmit)="onFormSubmitted(formReference)">
+  <div class="col-4">
+
+    <input type="Name" class="form-control" placeholder="نام" name="first-name" ngModel required>
+    <input type="email" class="form-control" placeholder="ایمیل" name="email" ngModel required email #emailField="ngModel">
+    <span *ngIf="!emailField.valid && emailField.touched">
+      لطفا ایمیل وارد کنید
+    </span>
+    <input type="password" class="form-control" placeholder="رمز عبور" name="password" ngModel required>
+
+    <button class="btn btn-primary">
+      ثبت نام
+    </button>
+  </div>
+</form>

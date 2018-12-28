@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  gender = "male";
 
   constructor() { }
 
@@ -17,7 +18,18 @@ export class RegisterComponent implements OnInit {
     console.log("Submitted!");
     console.log(formReference);
     console.log(formReference.valid);
-    
+    setTimeout(() => {
+      // formReference.setValue({
+      //   first_name: "",
+      //   email: "",
+      //   password: "",
+      //   gender: ""
+      // });
+      formReference.reset();
+      // formReference.form.patchValue({
+      //   email: "ali@gmail.com"
+      // })
+    }, 1000);
   }
 
 }

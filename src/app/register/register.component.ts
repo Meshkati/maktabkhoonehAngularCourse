@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,28 +8,23 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   gender = "male";
+  
+  registerForm: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
+    this.registerForm = new FormGroup({
+      name: new FormControl(null),
+      email: new FormControl(null),
+      password: new FormControl(null),
+      gender: new FormControl('female')
+    });
   }
 
-  onFormSubmitted(formReference: NgForm) {
+  onSubmit() {
     console.log("Submitted!");
-    console.log(formReference);
-    console.log(formReference.valid);
-    setTimeout(() => {
-      // formReference.setValue({
-      //   first_name: "",
-      //   email: "",
-      //   password: "",
-      //   gender: ""
-      // });
-      formReference.reset();
-      // formReference.form.patchValue({
-      //   email: "ali@gmail.com"
-      // })
-    }, 1000);
+    console.log(this.registerForm);  
   }
 
 }

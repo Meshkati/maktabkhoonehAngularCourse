@@ -19,6 +19,12 @@
       ایمیل صحیح نیست
     </span>
     <input type="password" class="form-control" placeholder="رمز عبور" formControlName="password">
+    <span *ngIf="registerForm.get('password').errors['required'] != null && registerForm.get('password').touched">
+      فیلد نباید خالی باشد
+    </span>
+    <span *ngIf="registerForm.get('password').errors['lowLevelPassword'] != null && registerForm.get('password').touched">
+      پسورد آسان است
+    </span>
 
     <button class="btn btn-primary">
       ثبت نام

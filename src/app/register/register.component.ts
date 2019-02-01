@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = new FormGroup({
       personalData: new FormGroup({
-        name: new FormControl(null, Validators.required),
+        name: new FormControl(null, Validators.required, this.invalidNames),
         gender: new FormControl('female')
       }),
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -42,6 +43,19 @@ export class RegisterComponent implements OnInit {
     }
 
     return null;
+  }
+
+  invalidNames(control: FormControl): Promise<any> | Observable<any> {
+    return new Promise<any>((resolve, reject) => {
+      // http request
+      setTimeout(() => {
+        if (control.value == "mostafa") {
+          resolve({invalidName: true})
+        } else {
+          resolve(null)
+        }
+      }, 2000);
+    })
   }
 
 }

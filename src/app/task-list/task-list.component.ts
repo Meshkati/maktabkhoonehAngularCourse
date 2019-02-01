@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project, Task, ProjectService } from '../services/project.service';
 import { ProjectsComponent } from '../projects/projects.component';
 import { RepositoryService } from '../repository.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-task-list',
@@ -47,6 +48,21 @@ export class TaskListComponent implements OnInit {
     this.repository.storeTasks(this.getTasks()).subscribe(
       res => {
         console.log(res);
+      }
+    )
+  }
+
+  onGetTasks() {
+    this.repository.getTasks().subscribe(
+      res => {
+        console.log(res);
+        const tasks = <Array<Task>>res
+        for(let task of tasks) {
+          this.projectService.addNewTask(task.title, task.isDone, task.projectID)
+        }
+      },
+      err => {
+        console.log(err);
       }
     )
   }

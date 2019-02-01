@@ -57,7 +57,7 @@ export class Project {
 }
 
 export class Task {
-    private title: string;
+    public title: string;
     public isDone: boolean = false;
     public projectID: number;
     

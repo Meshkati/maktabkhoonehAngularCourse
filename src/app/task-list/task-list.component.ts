@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project, Task, ProjectService } from '../services/project.service';
 import { ProjectsComponent } from '../projects/projects.component';
+import { RepositoryService } from '../repository.service';
 
 @Component({
   selector: 'app-task-list',
@@ -9,7 +10,9 @@ import { ProjectsComponent } from '../projects/projects.component';
 })
 export class TaskListComponent implements OnInit {
   
-  constructor(private projectService: ProjectService) { }
+  constructor(
+    private projectService: ProjectService,
+    private repository: RepositoryService) { }
   
   ngOnInit() {
     
@@ -38,6 +41,14 @@ export class TaskListComponent implements OnInit {
     // return titles;
 
     return this.projectService.getProjects();
+  }
+
+  onStoreTasks() {
+    this.repository.storeTasks(this.getTasks()).subscribe(
+      res => {
+        console.log(res);
+      }
+    )
   }
   
 }

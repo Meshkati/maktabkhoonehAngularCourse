@@ -13,15 +13,15 @@ export class AppHomeComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.testObservableSubscription = this.authService.testObservable().subscribe(
-      (data) => {
-        console.log("inHome - Observable " + data)
-      }) 
-    this.testSubjectSubscription = this.authService.testSubject().subscribe(
-      (data) => {
-        console.log("inHome - Subject " + data)
-      }
-    )
+    // this.testObservableSubscription = this.authService.testObservable().subscribe(
+    //   (data) => {
+    //     console.log("inHome - Observable " + data)
+    //   }) 
+    // this.testSubjectSubscription = this.authService.testSubject().subscribe(
+    //   (data) => {
+    //     console.log("inHome - Subject " + data)
+    //   }
+    // )
   }
 
   ngOnDestroy() {

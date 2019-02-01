@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AppGuard } from './app-guard.guard';
 import { RegisterComponent } from './register/register.component';
+import { RepositoryService } from './repository.service';
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -37,9 +39,10 @@ import { RegisterComponent } from './register/register.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [ProjectService, AuthService, AppGuard],
+  providers: [ProjectService, AuthService, AppGuard, RepositoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

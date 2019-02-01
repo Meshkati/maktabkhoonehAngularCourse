@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -26,7 +26,8 @@ export class RegisterComponent implements OnInit {
         gender: new FormControl('female')
       }),
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, this.lowPasswords.bind(this)])
+      password: new FormControl(null, [Validators.required, this.lowPasswords.bind(this)]),
+      children: new FormArray([])
     });
   }
 
@@ -56,6 +57,11 @@ export class RegisterComponent implements OnInit {
         }
       }, 2000);
     })
+  }
+
+  onNewChild() {
+    console.log("Child!");
+    (<FormArray>this.registerForm.get('children')).push(new FormControl(null))
   }
 
 }

@@ -14,6 +14,15 @@
         </option>
       </select>  
     </div>
+    <div formArrayName="children">
+      <h3>
+        اسامی فرزندان
+      </h3>
+      <input type="text" *ngFor="let child of registerForm.get('children').controls">
+      <button class="btn btn-primary" (click)="onNewChild()">
+        اضافه کردن
+      </button>
+    </div>
     <input type="email" class="form-control" placeholder="ایمیل" formControlName="email">
     <span class="control-block rtl" *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
       ایمیل صحیح نیست

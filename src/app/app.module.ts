@@ -18,7 +18,8 @@ import { AuthService } from './auth.service';
 import { AppGuard } from './app-guard.guard';
 import { RegisterComponent } from './register/register.component';
 import { RepositoryService } from './repository.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MyInterceptor } from 'src/my.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ProjectService, AuthService, AppGuard, RepositoryService],
+  providers: [
+    ProjectService,
+    AuthService,
+    AppGuard,
+    RepositoryService,
+    { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

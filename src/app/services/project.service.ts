@@ -27,7 +27,7 @@ export class ProjectService {
     }
 
     addNewTask(title: string, isDone: boolean, projectID: number = 0) {
-        let newTask = new Task(title, isDone, projectID);
+        let newTask = new Task(title, isDone, projectID, new Date());
         this.addTaskToProject(newTask, projectID);
     }
 
@@ -60,10 +60,12 @@ export class Task {
     public title: string;
     public isDone: boolean = false;
     public projectID: number;
+    public createdAt: Date;
     
-    constructor(title: string, isDone, projectID: number) {
+    constructor(title: string, isDone, projectID: number, createdAt: Date) {
         this.title = title;
         this.isDone = isDone;
         this.projectID = projectID;
+        this.createdAt = createdAt;
     }
 }

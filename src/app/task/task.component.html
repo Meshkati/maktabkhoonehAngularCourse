@@ -1,7 +1,16 @@
-<div class="rtl">
-    {{task.title}}
-    <a [routerLink]="getProjectID()"><span class="badge badge-secondary">{{ getProjectTitle() }}</span></a>
-    <button class="btn btn-primary" (click)="completeTask()">
-        انجام شد
-    </button>
+<div class="row rtl">
+    <div class="col-4">
+        {{task.title}}
+    </div>
+    <div class="col-4">
+        {{ task.createdAt }}
+    </div>
+    <div class="col-2">
+        <a [routerLink]="getProjectID()"><span class="badge badge-secondary">{{ getProjectTitle() }}</span></a>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-primary" (click)="completeTask()">
+            انجام شد
+        </button>
+    </div>
 </div>

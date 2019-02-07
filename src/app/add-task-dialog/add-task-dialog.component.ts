@@ -18,7 +18,7 @@ export class AddTaskDialogComponent implements OnInit {
   }
 
   addNewTask() {
-    let task: Task = new Task(this.newTitle, false, this.newProjectID);
+    let task: Task = new Task(this.newTitle, false, this.newProjectID, new Date());
     console.log(this.newProjectID);
     this.projectService.addTaskToProject(task, this.newProjectID);
   }

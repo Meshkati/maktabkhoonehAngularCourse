@@ -1,9 +1,9 @@
 <div class="row rtl">
     <div class="col-4">
-        {{task.title}}
+        {{task.title | persianNumber }}
     </div>
     <div class="col-4">
-        {{ task.createdAt | date:'short' }}
+        {{ task.createdAt | date:'short' | persianNumber }}
     </div>
     <div class="col-2">
         <a [routerLink]="getProjectID()"><span class="badge badge-secondary">{{ getProjectTitle() }}</span></a>

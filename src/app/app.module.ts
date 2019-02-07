@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { RepositoryService } from './repository.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptor } from 'src/my.interceptor';
+import { PersianNumberPipe } from './persian-number.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MyInterceptor } from 'src/my.interceptor';
     AddTaskDialogComponent,
     NotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PersianNumberPipe
   ],
   imports: [
     BrowserModule,

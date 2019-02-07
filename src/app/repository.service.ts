@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { Task } from './services/project.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,9 @@ export class RepositoryService {
   }
 
   getTasks() {
-    return this.http.get(this.baseURL + 'tasks')
-  }
-
-  extractBody(response: Response) {
-    return response.json()
+    return this.http.get<Task[]>(this.baseURL + 'tasks', {
+      observe: 'body',
+      responseType: 'json'
+    })
   }
 }

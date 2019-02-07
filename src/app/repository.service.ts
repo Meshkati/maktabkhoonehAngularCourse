@@ -16,13 +16,7 @@ export class RepositoryService {
   ) { }
 
   storeTasks(tasks) {
-    const myHeaders = new HttpHeaders({
-      'Cotent-Type': 'application/json'
-    })
-
-    return this.http.post(this.baseURL + 'tasks/store', tasks, {
-      headers: myHeaders
-    })
+    return this.http.post(this.baseURL + 'tasks/store', tasks)
   }
 
   getTasks() {

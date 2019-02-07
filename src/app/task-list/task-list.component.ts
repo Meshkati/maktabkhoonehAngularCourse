@@ -48,6 +48,10 @@ export class TaskListComponent implements OnInit {
     this.repository.storeTasks(this.getTasks()).subscribe(
       res => {
         console.log(res);
+      },
+      err => {
+        console.log("In component!", err);
+        
       }
     )
   }

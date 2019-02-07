@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from "@angular/http";
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,13 @@ export class RepositoryService {
     const myHeaders = new Headers({
       'Cotent-Type': 'application/json'
     })
-    return this.http.post(this.baseURL + 'tasks/store', tasks, {headers: myHeaders})
+    return this.http.post(this.baseURL + 'tasks/storeSDSDSD', tasks, {headers: myHeaders}).pipe(
+      catchError(err => {
+        console.log("Error happened!", err);
+        
+        return throwError(err)
+      })
+    )
   }
 
   getTasks() {

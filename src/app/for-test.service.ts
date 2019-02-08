@@ -8,6 +8,6 @@ export class ForTestService {
   constructor() { }
 
   getTitle() {
-    return 'For Test!'
+    return 'QQQ'
   }
 }

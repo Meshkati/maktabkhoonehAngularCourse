@@ -6,6 +6,7 @@ import { ForTestService } from '../for-test.service';
 describe('ForTestComponent', () => {
   let component: ForTestComponent;
   let fixture: ComponentFixture<ForTestComponent>;
+  let testService: ForTestService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,6 +18,7 @@ describe('ForTestComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ForTestComponent);
     component = fixture.componentInstance;
+    testService = fixture.debugElement.injector.get(ForTestService);
     fixture.detectChanges();
   });
 
@@ -25,6 +27,8 @@ describe('ForTestComponent', () => {
   });
 
   it('Title should be For Test!', async(() => {
+    let spy = spyOn(testService, 'getTitle').and.returnValue('For Test!')
+
     fixture.whenStable().then(() => {
       const title = component.title
       expect(title).toEqual('For Test!');
@@ -37,7 +41,7 @@ describe('ForTestComponent', () => {
   })
 
   it('Title should be match to the proper service method result', async(() => {
-    const testService = fixture.debugElement.injector.get(ForTestService);
+    let spy = spyOn(testService, 'getTitle').and.returnValue('For Test!')
     fixture.whenStable().then(
       () => {
         expect(testService.getTitle()).toEqual(component.title)

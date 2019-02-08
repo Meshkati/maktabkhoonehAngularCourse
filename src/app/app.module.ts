@@ -23,6 +23,7 @@ import { MyInterceptor } from 'src/my.interceptor';
 import { PersianNumberPipe } from './persian-number.pipe';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { TimeLeftPipe } from './time-left.pipe';
+import { ForTestComponent } from './for-test/for-test.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TimeLeftPipe } from './time-left.pipe';
     LoginComponent,
     RegisterComponent,
     PersianNumberPipe,
-    TimeLeftPipe
+    TimeLeftPipe,
+    ForTestComponent
   ],
   imports: [
     BrowserModule,

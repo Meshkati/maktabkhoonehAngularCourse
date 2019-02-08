@@ -9,6 +9,7 @@ import { Task, ProjectService } from '../services/project.service';
 export class AddTaskDialogComponent implements OnInit {
   newTitle: string;
   newProjectID: number;
+  deadline;
 
   constructor(private projectService: ProjectService) {
     this.newProjectID = 0;
@@ -18,7 +19,8 @@ export class AddTaskDialogComponent implements OnInit {
   }
 
   addNewTask() {
-    let task: Task = new Task(this.newTitle, false, this.newProjectID, new Date());
+    const convertedDeadline = new Date(this.deadline.year, this.deadline.month - 1, this.deadline.day, 0, 0, 0)
+    let task: Task = new Task(this.newTitle, false, this.newProjectID, new Date(), convertedDeadline);
     console.log(this.newProjectID);
     this.projectService.addTaskToProject(task, this.newProjectID);
   }

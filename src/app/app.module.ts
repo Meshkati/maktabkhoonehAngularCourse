@@ -21,6 +21,7 @@ import { RepositoryService } from './repository.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptor } from 'src/my.interceptor';
 import { PersianNumberPipe } from './persian-number.pipe';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { PersianNumberPipe } from './persian-number.pipe';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     ProjectService,

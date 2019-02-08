@@ -26,8 +26,8 @@ export class ProjectService {
         this.projects.push(new Project(this.lastIDNumber++ ,projectTitle));
     }
 
-    addNewTask(title: string, isDone: boolean, projectID: number = 0) {
-        let newTask = new Task(title, isDone, projectID, new Date());
+    addNewTask(title: string, isDone: boolean, projectID: number = 0, deadline: Date) {
+        let newTask = new Task(title, isDone, projectID, new Date(), deadline);
         this.addTaskToProject(newTask, projectID);
     }
 
@@ -61,11 +61,13 @@ export class Task {
     public isDone: boolean = false;
     public projectID: number;
     public createdAt: Date;
+    public deadline: Date;
     
-    constructor(title: string, isDone, projectID: number, createdAt: Date) {
+    constructor(title: string, isDone, projectID: number, createdAt: Date, deadline: Date) {
         this.title = title;
         this.isDone = isDone;
         this.projectID = projectID;
         this.createdAt = createdAt;
+        this.deadline = deadline;
     }
 }

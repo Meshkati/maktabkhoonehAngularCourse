@@ -62,7 +62,7 @@ export class TaskListComponent implements OnInit {
         console.log(res);
         const tasks = <Array<Task>>res
         for(let task of tasks) {
-          this.projectService.addNewTask(task.title, task.isDone, task.projectID)
+          this.projectService.addNewTask(task.title, task.isDone, task.projectID, task.deadline)
         }
       },
       err => {

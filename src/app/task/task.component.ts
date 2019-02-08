@@ -12,7 +12,9 @@ export class TaskComponent implements OnInit {
   constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
-    // this.task = new Task("تسک!")
+    // setInterval(() => {
+    //   this.task.deadline = new Date(2019, 2, 8, 0, 0, 0)
+    // }, 1000)
   }
 
   completeTask() {

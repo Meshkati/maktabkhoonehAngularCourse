@@ -22,6 +22,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptor } from 'src/my.interceptor';
 import { PersianNumberPipe } from './persian-number.pipe';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { TimeLeftPipe } from './time-left.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    PersianNumberPipe
+    PersianNumberPipe,
+    TimeLeftPipe
   ],
   imports: [
     BrowserModule,
